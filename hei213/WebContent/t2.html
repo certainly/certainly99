@@ -1,0 +1,43 @@
+﻿<html xmlns:wb="http://open.weibo.com/wb">
+<head>
+<title>3js微博</title>
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1120095468" type="text/javascript" charset="utf-8"></script>
+<script type ="text/javascript" charset= "utf-8" src ="jquery.js" ></script>
+
+</head>
+<body onload="testNow()">
+<div id="content"></div>
+<br/>
+<br/>
+<br/>
+<script type="text/javascript">
+htmlobj= $.ajax({
+	   type: "GET",
+	   url: "http://s.weibo.com/weibo/%25E8%25A5%25BF%25E5%258D%2595%25E5%25A4%25A7%25E6%2582%25A6%25E5%259F%258EWIFI%25E5%25AF%2586%25E7%25A0%2581?&topnav=1&topsug=1",
+	 datatype: "html",
+	   async:false,
+	     error: function(XMLHttpRequest, textStatus, errorThrown){                        //返回失败后
+     	console.log("error loading");
+      alert('Error 3434loading XML document'+errorThrown); 
+      }, 
+      
+	   success: function(msg){
+	    tar='WIFI\\u5bc6\\u7801<\\/span>\\uff1a';
+	 //console.log(msg);
+	    st=msg.indexOf(tar);
+	   	//alert("st1"+st);
+	   	rz=msg.substring(st+30,st+38);
+	   	//alert(rz);
+	  $("#content").append("<div>"+rz+"</div>");
+	  // 	alert("lfocus: "+msg.substring(st+30,st+38));
+	   	
+	   	//$("#output").html(msg);
+//	bookmarks.sethash(url,url,"ajcontainer");
+//	     alert( "Data Saved: " + msg );
+	   }
+	 });
+</script>
+
+
+</body>
+</html>
